@@ -1,0 +1,24 @@
+{
+  "id": "SBOM-NO-LIST",
+  "title": "有依赖清单却没有物料清单 —— 项目里找不到任何 SBOM 文件",
+  "severity": "high",
+  "source": "美国行政令 14028《改善国家网络安全》第 4(e) 条 —— 要求软件供应链透明，联邦采购的软件须提供 SBOM；NTIA《SBOM Minimum Elements》官方文档 —— 一份 SBOM 至少要让消费方看清「依赖了哪些组件、各是什么版本」。对照判据：项目里已存在 lockfile（npm/pnpm/yarn），说明依赖是锁定且可枚举的，此时仍没有 SBOM，就无法回答「这个产物里到底有谁」。",
+  "advice": "你项目里有 lockfile，说明依赖是可枚举的，但仓库里找不到任何 SBOM 文件（sbom.json / bom.json / *.cdx.json / bom.xml 等）。这不一定是违规：很多团队在发布流水线里临时生成 SBOM、不进仓库。请确认属于哪种情况：① 如果确实没生成过 —— 加一步 SBOM 生成（cyclonedx / syft / spdx-sbom-generator 都可以），并随产物一起发布；② 如果流水线里生成了但没进仓库 —— 在 README 或发布文档里写明「清单在发布物里、不随源码走」，并把这条规则按需调整；③ 如果清单放在被扫描器跳过的目录（dist / build / node_modules）—— 把它挪到仓库里可核对的常规位置。注意：生成 SBOM 不是本工具的活，本工具只检查有没有、全不全、新不新。",
+  "check": {
+    "type": "files-lack",
+    "pattern": "bomFormat|spdxVersion|cyclonedx|SPDXRef|SPDXVersion|PackageName\\s*:|\"components\"|\"packages\"|<component",
+    "paths": [
+      "**/sbom.json",
+      "**/bom.json",
+      "**/*.cdx.json",
+      "**/*.spdx.json",
+      "**/*.sbom.json",
+      "**/cyclonedx.json",
+      "**/bom.xml",
+      "**/sbom.xml",
+      "**/*.cdx.xml",
+      "**/*.spdx"
+    ],
+    "when": "\"lockfileVersion\"|yarn lockfile|__metadata:"
+  }
+}

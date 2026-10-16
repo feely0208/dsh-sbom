@@ -1,0 +1,25 @@
+{
+  "id": "SBOM-EMPTY-SHELL",
+  "title": "SBOM 文件里没有组件条目 —— 清单是个空壳，看着有其实没写谁",
+  "severity": "high",
+  "source": "NTIA《SBOM Minimum Elements》官方文档 —— 「Components」与「Supply Chain Relationships」是 SBOM 的最低要素：清单必须列出实际包含的组件，空清单不满足最低要素；CycloneDX 官方文档 · components 字段；SPDX 官方文档 · packages 字段（SPDX 规范以 packages 数组承载组件）。",
+  "advice": "存在 SBOM 文件，但里面没有任何组件条目（CycloneDX 的 components 数组为空、SPDX 的 packages 为空、或 XML 里没有 component 节点）。这比「没有 SBOM」更危险：流水线上的检查会因为文件名匹配而认为「有清单」，实际它回答不了「你的产物里到底有谁」。常见原因是生成器跑在错的目录（扫到 0 个依赖）、生成后没写进去、或者先建了个占位文件就再没更新。请重新生成，并核对清单里的组件数与 lockfile 里的依赖数是否对得上。",
+  "check": {
+    "type": "file-lacks",
+    "pattern": "\"(components|packages)\"\\s*:\\s*\\[\\s*\\{\\s*\"|<component[\\s>]|PackageName\\s*:",
+    "flags": "s",
+    "paths": [
+      "**/sbom.json",
+      "**/bom.json",
+      "**/*.cdx.json",
+      "**/*.spdx.json",
+      "**/*.sbom.json",
+      "**/cyclonedx.json",
+      "**/bom.xml",
+      "**/sbom.xml",
+      "**/*.cdx.xml",
+      "**/*.spdx"
+    ],
+    "evidence": "这个 SBOM 里没有任何组件条目（components / packages / component 节点均为空或缺失）"
+  }
+}

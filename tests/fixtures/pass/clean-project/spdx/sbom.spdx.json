@@ -1,0 +1,41 @@
+{
+  "spdxVersion": "SPDX-2.3",
+  "dataLicense": "CC0-1.0",
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "name": "ledger-sync-service-1.6.0",
+  "documentNamespace": "https://acme.example/spdx/ledger-sync-service-1.6.0-6f1b8d2c",
+  "creationInfo": {
+    "created": "2026-10-15T02:12:00Z",
+    "creators": ["Tool: spdx-sbom-generator-0.0.15"]
+  },
+  "packages": [
+    {
+      "name": "dayjs",
+      "SPDXID": "SPDXRef-Package-dayjs",
+      "versionInfo": "1.11.13",
+      "downloadLocation": "https://registry.npmjs.org/dayjs/-/dayjs-1.11.13.tgz",
+      "licenseConcluded": "MIT",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:npm/dayjs@1.11.13"
+        }
+      ]
+    },
+    {
+      "name": "pino",
+      "SPDXID": "SPDXRef-Package-pino",
+      "versionInfo": "9.5.0",
+      "downloadLocation": "https://registry.npmjs.org/pino/-/pino-9.5.0.tgz",
+      "licenseConcluded": "MIT",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:npm/pino@9.5.0"
+        }
+      ]
+    }
+  ]
+}

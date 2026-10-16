@@ -1,0 +1,27 @@
+{
+  "project": "acme-inventory-api",
+  "note": "由 npm ls --json 导出后改名成了 bom.json，并不是标准 SBOM",
+  "generatedBy": "npm ls --json --all",
+  "dependencies": {
+    "dayjs": {
+      "version": "1.11.13",
+      "resolved": "https://registry.npmjs.org/dayjs/-/dayjs-1.11.13.tgz"
+    },
+    "express": {
+      "version": "4.21.2",
+      "resolved": "https://registry.npmjs.org/express/-/express-4.21.2.tgz"
+    },
+    "pg": {
+      "version": "8.13.1",
+      "resolved": "https://registry.npmjs.org/pg/-/pg-8.13.1.tgz"
+    },
+    "undici": {
+      "version": "6.21.0",
+      "resolved": "https://registry.npmjs.org/undici/-/undici-6.21.0.tgz"
+    },
+    "zod": {
+      "version": "3.24.1",
+      "resolved": "https://registry.npmjs.org/zod/-/zod-3.24.1.tgz"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "acme-inventory-api",
+  "version": "2.4.1",
+  "private": true,
+  "type": "module",
+  "description": "库存查询服务（故意有问题的样本：SBOM 各种不全）",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "node --test src/*.test.js",
+    "sbom": "cyclonedx-npm --output-file sbom.json"
+  },
+  "dependencies": {
+    "dayjs": "^1.11.11",
+    "express": "^4.19.2",
+    "pg": "^8.12.0",
+    "undici": "^6.19.2",
+    "zod": "^3.23.8"
+  }
+}

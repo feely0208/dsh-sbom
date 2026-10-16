@@ -1,0 +1,25 @@
+{
+  "id": "SBOM-NO-IDENTIFIER",
+  "title": "SBOM 里的组件没有唯一标识（purl / CPE）—— 清单没法拿去跨项目核对",
+  "severity": "low",
+  "source": "NTIA《SBOM Minimum Elements》官方文档 —— Component Identifier 是最低要素之一，要求用 purl（Package URL）或 CPE 等唯一标识，把清单里的组件对应到世界上的同一个东西；CycloneDX 官方文档 · purl 字段（Package URL 由 package-url 规范定义）；SPDX 官方文档 · externalRefs 里的 purl / cpe23 引用。",
+  "advice": "这份 SBOM 里只写了组件名和版本，找不到 purl 或 CPE 这类唯一标识。只有名字和版本时，不同生态里同名的包无法区分（例如 npm 与 PyPI 都有 `requests` 类的名字），下游做漏洞比对和许可证核对只能靠猜，误判率很高。请在生成 SBOM 时打开「包含标识符」选项（CycloneDX 生态一般默认会写 purl；SPDX 生态需要补 externalRefs）。如果你的组件确实只用了文档内的 bom-ref / SPDXID 作为标识，请确认它能跨项目核对，并按需忽略这条。",
+  "check": {
+    "type": "file-lacks",
+    "pattern": "\"purl\"|<purl[\\s>]|\"cpe\"|cpe:2\\.3|pkg:(npm|pypi|maven|golang|nuget|cargo|gem|composer|deb|rpm|github|oci)",
+    "flags": "is",
+    "paths": [
+      "**/sbom.json",
+      "**/bom.json",
+      "**/*.cdx.json",
+      "**/*.spdx.json",
+      "**/*.sbom.json",
+      "**/cyclonedx.json",
+      "**/bom.xml",
+      "**/sbom.xml",
+      "**/*.cdx.xml",
+      "**/*.spdx"
+    ],
+    "evidence": "没有找到 purl / CPE 这类组件唯一标识"
+  }
+}

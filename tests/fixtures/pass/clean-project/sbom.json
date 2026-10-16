@@ -1,0 +1,44 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.5",
+  "serialNumber": "urn:uuid:6b2d4c18-5a37-4e09-8f21-0d9c7b3a5e42",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-15T02:10:00Z",
+    "tools": [
+      { "vendor": "CycloneDX", "name": "cyclonedx-npm", "version": "1.20.0" }
+    ],
+    "component": {
+      "type": "application",
+      "name": "ledger-sync-service",
+      "version": "1.6.0",
+      "bom-ref": "pkg:npm/ledger-sync-service@1.6.0"
+    }
+  },
+  "components": [
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/dayjs@1.11.13",
+      "name": "dayjs",
+      "version": "1.11.13",
+      "purl": "pkg:npm/dayjs@1.11.13",
+      "licenses": [{ "license": { "id": "MIT" } }]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/pino@9.5.0",
+      "name": "pino",
+      "version": "9.5.0",
+      "purl": "pkg:npm/pino@9.5.0",
+      "licenses": [{ "license": { "id": "MIT" } }]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/zod@3.24.1",
+      "name": "zod",
+      "version": "3.24.1",
+      "purl": "pkg:npm/zod@3.24.1",
+      "licenses": [{ "license": { "id": "MIT" } }]
+    }
+  ]
+}

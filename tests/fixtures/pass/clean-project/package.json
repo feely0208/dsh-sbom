@@ -1,0 +1,16 @@
+{
+  "name": "ledger-sync-service",
+  "version": "1.6.0",
+  "private": true,
+  "type": "module",
+  "description": "账务同步服务（干净样本：有 lockfile，也有格式正确、内容完整的 SBOM）",
+  "scripts": {
+    "start": "node src/index.js",
+    "sbom": "cyclonedx-npm --output-file sbom.json"
+  },
+  "dependencies": {
+    "dayjs": "^1.11.13",
+    "pino": "^9.5.0",
+    "zod": "^3.24.1"
+  }
+}

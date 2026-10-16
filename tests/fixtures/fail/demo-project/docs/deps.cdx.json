@@ -1,0 +1,22 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.4",
+  "serialNumber": "urn:uuid:9c4b7e52-1d63-4a8f-b0c1-2e7f5a9d3b46",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2024-03-11T08:20:00Z",
+    "tools": [
+      { "vendor": "acme", "name": "acme-sbom-export", "version": "0.1.2" }
+    ],
+    "component": {
+      "type": "application",
+      "name": "acme-inventory-api",
+      "version": "1.9.0"
+    }
+  },
+  "components": [
+    { "type": "library", "name": "dayjs", "version": "1.11.10", "scope": "required" },
+    { "type": "library", "name": "express", "version": "4.18.2", "scope": "required" },
+    { "type": "library", "name": "pg", "version": "8.11.3", "scope": "required" }
+  ]
+}

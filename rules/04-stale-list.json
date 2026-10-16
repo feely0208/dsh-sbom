@@ -1,0 +1,24 @@
+{
+  "id": "SBOM-STALE",
+  "title": "SBOM 文件超过 180 天没更新 —— 清单可能停在依赖早已换过的旧版本上",
+  "severity": "medium",
+  "source": "NTIA《SBOM Minimum Elements》官方文档 —— Timestamp 是 SBOM 最低要素之一，记录清单的生成时间，用来判断它是否对应当前这一版产物；美国行政令 14028 第 4(e) 条 —— SBOM 要能反映交付给用户的那一版软件的组成。对照判据：同一项目里的 lockfile 是依赖的真实状态，SBOM 与其长期不同步即失去核对价值。",
+  "advice": "这份 SBOM 已经超过 180 天没动过，而依赖通常在这段时间里换过好几轮（lockfile 的更新时间可以拿来对照）。清单一旦过期，它给出的组件列表和实际产物就对不上：漏报新增的依赖、多报已移除的依赖，漏洞扫描和许可证核对都会得出错误结论。请在每次发布（或至少每次 lockfile 变更）时重新生成 SBOM，把它纳入发布检查清单；如果这只是历史归档文件，请移出被扫描的目录或改名，避免被当成当前清单。",
+  "check": {
+    "type": "file-age",
+    "paths": [
+      "**/sbom.json",
+      "**/bom.json",
+      "**/*.cdx.json",
+      "**/*.spdx.json",
+      "**/*.sbom.json",
+      "**/cyclonedx.json",
+      "**/bom.xml",
+      "**/sbom.xml",
+      "**/*.cdx.xml",
+      "**/*.spdx"
+    ],
+    "maxDays": 180,
+    "minSize": 32
+  }
+}

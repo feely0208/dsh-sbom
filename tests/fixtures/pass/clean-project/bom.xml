@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bom xmlns="http://cyclonedx.org/schema/bom/1.5" serialNumber="urn:uuid:2e8f5a71-9c46-4b3d-a0e7-6f1b8d2c4a95" version="1">
+  <metadata>
+    <timestamp>2026-10-15T02:10:00Z</timestamp>
+    <component type="application" bom-ref="pkg:npm/ledger-sync-service@1.6.0">
+      <name>ledger-sync-service</name>
+      <version>1.6.0</version>
+      <purl>pkg:npm/ledger-sync-service@1.6.0</purl>
+    </component>
+  </metadata>
+  <components>
+    <component type="library" bom-ref="pkg:npm/dayjs@1.11.13">
+      <name>dayjs</name>
+      <version>1.11.13</version>
+      <purl>pkg:npm/dayjs@1.11.13</purl>
+    </component>
+    <component type="library" bom-ref="pkg:npm/pino@9.5.0">
+      <name>pino</name>
+      <version>9.5.0</version>
+      <purl>pkg:npm/pino@9.5.0</purl>
+    </component>
+  </components>
+</bom>

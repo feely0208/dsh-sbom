@@ -1,0 +1,25 @@
+{
+  "id": "SBOM-NOT-STANDARD",
+  "title": "SBOM 文件不是标准格式 —— 没有 bomFormat / spdxVersion 这类格式标识",
+  "severity": "high",
+  "source": "CycloneDX 官方文档 · JSON 规范要求根节点带 bomFormat 字段（值为 CycloneDX）与 specVersion；CycloneDX XML 规范要求根元素带 xmlns=\"http://cyclonedx.org/schema/bom/<版本>\" 命名空间；SPDX 官方文档 · SPDX 规范要求带 spdxVersion 字段（JSON）或 SPDXVersion 标签（tag-value）。美国行政令 14028 第 4(e) 条要求的 SBOM 指的是可被工具消费的标准格式清单。",
+  "advice": "这个文件名字像 SBOM，但里面没有 CycloneDX 的 bomFormat、也没有 SPDX 的 spdxVersion，因此下游工具（Dependency-Track、漏洞扫描、许可证核对）无法自动消费它 —— 等于白做。常见原因：把 `npm ls --json` 或内部库存系统导出的依赖表直接改名成 bom.json；或者手写了一份 XML 清单。请用标准工具重新导出（cyclonedx-npm / @cyclonedx/cyclonedx-webpack-plugin / syft / spdx-sbom-generator 等），并保留规范要求的格式标识字段；如果这份自制清单还有别的用途，请换个不叫 sbom/bom 的文件名，避免被当成 SBOM。",
+  "check": {
+    "type": "file-lacks",
+    "pattern": "\"bomFormat\"\\s*:\\s*\"CycloneDX\"|\"spdxVersion\"\\s*:\\s*\"SPDX-|cyclonedx\\.org/schema/bom|<spdx:|SPDXVersion\\s*:\\s*SPDX-",
+    "flags": "s",
+    "paths": [
+      "**/sbom.json",
+      "**/bom.json",
+      "**/*.cdx.json",
+      "**/*.spdx.json",
+      "**/*.sbom.json",
+      "**/cyclonedx.json",
+      "**/bom.xml",
+      "**/sbom.xml",
+      "**/*.cdx.xml",
+      "**/*.spdx"
+    ],
+    "evidence": "没有找到 CycloneDX 的 bomFormat 或 SPDX 的 spdxVersion 格式标识"
+  }
+}
