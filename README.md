@@ -1,5 +1,7 @@
 # @deepwhale-cn/dsh-sbom
 
+[![dshfind 收录](https://dshfind.com/api/badge/feely0208/dsh-sbom?lang=zh)](https://dshfind.com/zh/plugins/feely0208/dsh-sbom)
+
 **你的产物里到底有谁，清单说了算。**
 
 **关键词**：软件物料清单 · SBOM · 供应链安全 · CycloneDX · SPDX · 依赖透明 · 行政令 14028 · NTIA 最低要素
